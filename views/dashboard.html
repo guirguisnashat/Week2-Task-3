@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | SecureAuth</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <!-- This page is only served to authenticated users (requirePageAuth on the server). -->
+  <header class="topbar">
+    <div class="container topbar__inner">
+      <span class="brand"><span class="brand__mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></span>SecureAuth</span>
+      <button type="button" class="btn btn--ghost" id="logout-btn">Log out</button>
+    </div>
+  </header>
+
+  <main class="container dash">
+    <div class="loading" id="loading" role="status"><div class="spinner" aria-hidden="true"></div>Loading your dashboard…</div>
+
+    <div id="content" hidden>
+      <section class="welcome" aria-labelledby="welcome-heading">
+        <div class="avatar" id="avatar" aria-hidden="true"></div>
+        <div>
+          <p id="welcome-title">Welcome back,</p>
+          <h1 id="welcome-heading"><span id="welcome-name"></span></h1>
+        </div>
+        <span class="badge badge--light" id="stat-sessions"></span>
+      </section>
+
+      <div class="grid grid--2">
+        <section class="card" aria-labelledby="account-title">
+          <h2 id="account-title">Account details</h2>
+          <dl class="details">
+            <div><dt>Username</dt><dd id="detail-username"></dd></div>
+            <div><dt>Email</dt><dd id="detail-email"></dd></div>
+            <div><dt>User ID</dt><dd id="detail-id"></dd></div>
+            <div><dt>Member since</dt><dd id="detail-created"></dd></div>
+            <div><dt>Last login</dt><dd id="detail-last-login"></dd></div>
+          </dl>
+        </section>
+
+        <section class="card" aria-labelledby="sessions-title">
+          <h2 id="sessions-title">Active sessions</h2>
+          <ul class="sessions" id="session-list"></ul>
+          <button type="button" class="btn btn--danger-ghost btn--block" id="logout-all-btn">Log out of all devices</button>
+        </section>
+
+        <section class="card" aria-labelledby="security-title">
+          <h2 id="security-title">How your account is protected</h2>
+          <ul class="security-list">
+            <li>Your password is stored only as a salted bcrypt hash.</li>
+            <li>Your session token lives in an HttpOnly cookie that scripts cannot read.</li>
+            <li>The cookie is SameSite=Strict, so other sites can't use it.</li>
+            <li>Sessions expire automatically after 2 hours.</li>
+            <li>Logging out revokes the session on the server immediately.</li>
+          </ul>
+        </section>
+
+        <section class="card" aria-labelledby="protected-title">
+          <h2 id="protected-title">Protected content</h2>
+          <p>This page and the <code>/api/dashboard</code> data behind it can only be reached with a valid, unexpired and un-revoked session. Try opening <a href="/dashboard">/dashboard</a> in a private window: you'll be redirected to the login page.</p>
+        </section>
+      </div>
+    </div>
+  </main>
+  <script type="module" src="/js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create account | SecureAuth</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="auth">
+    <aside class="auth__aside" aria-hidden="true">
+      <span class="brand"><span class="brand__mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></span>SecureAuth</span>
+      <div>
+        <h2>Create your secure account.</h2>
+        <p>It takes less than a minute. Choose a strong password you don't use anywhere else.</p>
+        <ul class="feature-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Unique email and username</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Password strength checked as you type</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Every rule re-checked on the server</li>
+        </ul>
+      </div>
+      <small>WeIntern Pvt Ltd · Week 2 · Task 3</small>
+    </aside>
+
+    <main class="auth__main">
+      <div class="auth-card">
+        <span class="brand"><span class="brand__mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></span>SecureAuth</span>
+        <h1>Create an account</h1>
+        <p>Already registered? <a href="/login">Sign in</a></p>
+
+        <form class="form" id="register-form" novalidate>
+          <div class="alert" id="form-alert" role="alert" hidden></div>
+
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" maxlength="254" required aria-describedby="email-error">
+            <p class="field__error" id="email-error"></p>
+          </div>
+
+          <div class="field">
+            <label for="username">Username</label>
+            <input id="username" name="username" type="text" autocomplete="username" autocapitalize="none" spellcheck="false" maxlength="30" required aria-describedby="username-hint username-error">
+            <span class="field__hint" id="username-hint">3–30 characters: letters, numbers and underscores.</span>
+            <p class="field__error" id="username-error"></p>
+          </div>
+
+          <div class="field">
+            <label for="password">Password</label>
+            <div class="input-wrap">
+              <input id="password" name="password" type="password" autocomplete="new-password" maxlength="72" required aria-describedby="password-rules strength-label password-error">
+              <button type="button" class="toggle-password" aria-controls="password" aria-pressed="false" aria-label="Show password">
+                <svg class="icon-show" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg>
+                <svg class="icon-hide" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.9 17.9A10.4 10.4 0 0 1 12 19c-7 0-11-7-11-7a19.8 19.8 0 0 1 5.1-5.9M9.9 4.2A9.9 9.9 0 0 1 12 4c7 0 11 7 11 7a19.6 19.6 0 0 1-2.2 3.2M1 1l22 22"/><path d="M14.1 14.1a3 3 0 1 1-4.2-4.2"/></svg>
+              </button>
+            </div>
+            <div class="strength" id="strength" data-score="0" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+            <span class="field__hint" id="strength-label" aria-live="polite"></span>
+            <ul class="rules" id="password-rules">
+              <li data-rule="length">At least 8 characters</li>
+              <li data-rule="letter">Contains a letter</li>
+              <li data-rule="number">Contains a number</li>
+            </ul>
+            <p class="field__error" id="password-error"></p>
+          </div>
+
+          <div class="field">
+            <label for="confirmPassword">Confirm password</label>
+            <div class="input-wrap">
+              <input id="confirmPassword" name="confirmPassword" type="password" autocomplete="new-password" maxlength="72" required aria-describedby="confirmPassword-error">
+              <button type="button" class="toggle-password" aria-controls="confirmPassword" aria-pressed="false" aria-label="Show password">
+                <svg class="icon-show" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg>
+                <svg class="icon-hide" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.9 17.9A10.4 10.4 0 0 1 12 19c-7 0-11-7-11-7a19.8 19.8 0 0 1 5.1-5.9M9.9 4.2A9.9 9.9 0 0 1 12 4c7 0 11 7 11 7a19.6 19.6 0 0 1-2.2 3.2M1 1l22 22"/><path d="M14.1 14.1a3 3 0 1 1-4.2-4.2"/></svg>
+              </button>
+            </div>
+            <p class="field__error" id="confirmPassword-error"></p>
+          </div>
+
+          <button type="submit" class="btn btn--primary btn--block" id="submit-btn">Create account</button>
+        </form>
+      </div>
+    </main>
+  </div>
+  <script type="module" src="/js/register.js"></script>
+</body>
+</html>
